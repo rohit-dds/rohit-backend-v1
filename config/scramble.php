@@ -118,7 +118,9 @@ return [
      * ],
      * ```
      */
-    'servers' => null,
+    'servers' => [
+        'API' => env('SCRAMBLE_API_SERVER', 'http://127.0.0.1:8000/api'),
+    ],
 
     /**
      * Determines how Scramble stores the descriptions of enum cases.
@@ -188,10 +190,7 @@ return [
     'security_strategy' => [
         MiddlewareAuthSecurityStrategy::class,
         [
-            'middleware' => ['auth', 'auth:*'],
-            'scheme' => SecurityScheme::http('bearer')
-                ->as('bearerAuth')
-                ->setDescription('Enter your Sanctum token obtained from /api/user/login'),
+            'middleware' => ['auth:sanctum'],
         ],
     ],
 ];
