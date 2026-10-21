@@ -17,7 +17,7 @@ jobs:
     name: Laravel Tests
     runs-on: ubuntu-latest
 
-    # Start a temporary MySQL database for this job
+    # Temporary MySQL database for CI
     services:
       mysql:
         image: mysql:8.0
@@ -34,13 +34,13 @@ jobs:
           --health-timeout=5s
           --health-retries=10
 
-    # Explicitly configure Laravel to use this MySQL service
+    # Laravel database configuration
     env:
       DB_CONNECTION: mysql
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
       DB_DATABASE: rohitdb
-      DB_USERNAME: root
+      DB_USERNAME: laravel
       DB_PASSWORD: laravel_password
 
     steps:
